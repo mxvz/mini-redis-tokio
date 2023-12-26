@@ -13,5 +13,9 @@ async fn main() -> Result<()> {
 
     println!("got value from the server; result={:?}", result);
 
+    let mut client2 = client::connect("127.0.0.1:6379").await?;
+    let result = client2.get("hello").await?;
+    println!("got value from the server by client2; result={:?}", result);
+
     Ok(())
 }
